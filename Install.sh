@@ -36,6 +36,11 @@ cd ~
 if [ ! -d "Nautilus" ]; then 
     git clone https://github.com/ayrelabs/Nautilus.git
 fi
+if [  -d ".screen" ]; then 
+    cd ./.screen
+    rm *.*
+    cd ../
+fi
 ###############################################
 # Second change the password
 ###############################################
@@ -49,12 +54,13 @@ cd Nautilus/NautilusServer/screen_service_for_Nautilus
 ./StartCommandProxyAndTerminalServiceForTerminalWithID.sh 2
 #control-A, D
 
-./screen -S NAUTILUS_SERVER -d -m ./../compileAndRun.sh
+cd ../
+./screen_service_for_Nautilus/screen -S NAUTILUS_SERVER -d -m ./compileAndRun.sh
 #cd ../
 #./compileAndRun.sh
 # ctr -a, d
 
-
+cd ./screen_service_for_Nautilus
 ./screen -S NAUTILUS_VR_WEB_SERVER -d -m http-server ./../../NautilusVRClient -p 80
 #cd ../../NautilusVRClient
 #http-server ./ -p 80
