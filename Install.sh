@@ -66,4 +66,8 @@ cd ./screen_service_for_Nautilus
 #http-server ./ -p 80
 #control-A, D
 
-
+cd ~
+if [ ! ".nautilus" ]; then 
+    echo "cool" >> ./.nautilus
+    echo "cd ~/install_project/; ./Install.sh" >> ~/.profile
+fi
